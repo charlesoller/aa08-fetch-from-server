@@ -1,27 +1,27 @@
 import {
-    deleteDog, 
-    getAllDogs, 
-    getDogNumberTwo, 
-    postNewDog,  
+    deleteDog,
+    getAllDogs,
+    getDogNumberTwo,
+    postNewDog,
     postNewDogV2
 } from "./your-code.js";
 
 const cbHandler = async (res) => {
     if(res.redirected) {
        return window.location.href = res.url
-    } 
+    }
 
-    const [_, endpoint] = res.url.split("http://localhost:5001/");
+    const [_, endpoint] = res.url.split("http://localhost:5002/");
     if(/dogs\/\d+\/delete/.test(endpoint)) {
         const html  = await res.text()
         const startIdx = html.indexOf("<body>");
         const endIdx = html.indexOf("</body>");
         const body = html.slice(startIdx, endIdx + 7)
-        document.body.innerHTML = body 
+        document.body.innerHTML = body
     } else {
         window.location.href = `/${endpoint}`;
     }
-    
+
     return res
 };
 

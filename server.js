@@ -46,7 +46,7 @@ const server = http.createServer((req, res) => {
         res.setHeader("Content-Type", "text/html");
         res.write(resBody);
         return res.end();
-    }
+    }ß
     const idxToDelete = dogs.findIndex(dog => dog.dogId == id);
     dogs.splice(idxToDelete, 1)
     res.statusCode = 302;
@@ -55,6 +55,7 @@ const server = http.createServer((req, res) => {
   }
 
   if (req.method === "GET" && req.url === "/api/dogs") {
+    console.log("HERE")
     res.setHeader("Content-Type","application/json")
     res.write(JSON.stringify(dogs))
     return res.end()
@@ -62,6 +63,6 @@ const server = http.createServer((req, res) => {
   return htmlRouter(req, res)
 });
 
-const port = 5001;
+const port = 5002;
 
 server.listen(port, () => console.log('Server is listening on port', port));
