@@ -9,28 +9,51 @@ export function getDogNumberTwo() {
 }
 
 export function postNewDog() {
-    const url = "/dogs";
-    const headers = {"Content-Type": "applications/x-www-form-urlencoded"};
-    const body = new URLSearchParams({
-        name: "Fluffy",
-        age: "9"
-    });
+//     const url = "/dogs";
+//     const headers = {"Content-Type": "applications/x-www-form-urlencoded"};
+//     const body = new URLSearchParams({
+//         name: "Fluffy",
+//         age: "9"
+//     });
 
-    const options = {
-        method: "POST",
-        headers: headers,
-        body: body
-    };
+//     const options = {
+//         method: "POST",
+//         headers: headers,
+//         body: body
+//     };
 
-    fetch(url, options);
+//     fetch(url, options);
+// }
+
+//alexi's:
+const myCat = new URLSearchParams({name: 'King', age: 13});
+return fetch('/dogs', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'applications/x-www-form-urlencoded'
+    },
+        body: myCat
+    })
 }
 
 export function postNewDogV2(name, age) {
-     // Your code here
+    const newDog = new URLSearchParams({name, age});
+    return fetch('/dogs', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'applications/x-www-form-urlencoded'
+        },
+            body: newDog
+        })
 }
 
 export function deleteDog(id) {
-      // Your code here
+    return fetch(`/dogs/${id}/delete`, {
+        method: 'POST',
+        headers: {
+            'AUTH': 'ckyut5wau0000jyv5bsrud90y'
+        }
+    })
 }
 
 // const url = "/endpoint";
